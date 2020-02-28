@@ -16,13 +16,13 @@ func FindUserInfo(c *gin.Context) {
 		c.JSON(http.StatusOK, utils.Respone(utils.WRONG_PARAM, err.Error(), nil))
 		return
 	}
-	var user_info model.User
-	fmt.Println(req.Name)
+
+	var userList []model.Userinfo
+
 	db := dao.Mysql
-	db.Table("userinfo").Where("name LIKE ?", "%"+req.Name+"%").First(&user_info)
+	err := db.Model(&model.Userinfo{}).Find(&userList)
+	fmt.Println(err)
 
-	fmt.Println(user_info)
-
-	c.JSON(http.StatusOK, utils.Respone(1, "查询成功", nil))
+	c.JSON(http.StatusOK, utils.Respone(1, "查询成功", userList))
 	return
 }

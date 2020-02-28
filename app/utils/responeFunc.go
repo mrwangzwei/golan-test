@@ -1,15 +1,15 @@
 package utils
 
 type ResponseInfo struct {
-	ErrCode int         `json:"errCode"`
-	ErrMsg  string      `json:"errMsg"`
-	Data    interface{} `json:"data"`
+	Code int         `json:"code"`
+	Msg  string      `json:"msg"`
+	Data interface{} `json:"data"`
 }
 
-func Respone(errCode int, errMsg string, data interface{}) ResponseInfo {
+func Respone(code int, msg string, data interface{}) ResponseInfo {
 	return ResponseInfo{
-		ErrCode: errCode,
-		ErrMsg:  errMsg,
-		Data:    data,
+		Code: code,
+		Msg:  msg,
+		Data: data,
 	}
 }

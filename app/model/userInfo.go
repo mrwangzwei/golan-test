@@ -1,8 +1,14 @@
 package model
 
-type User struct {
+import "time"
+
+type Userinfo struct {
 	ID        int64  `json:"id"`
 	Name      string `json:"name"`
 	Phone     string `json:"phone"`
-	CreatedAt string `json:"created_at"`
+	CreatedAt time.Time
+}
+
+func (Userinfo) TableName() string {
+	return "userinfo"
 }
