@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47384ce0-acd3-433e-9372-c63406aefa37" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/commands/webStart.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/userInfo.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/userInfo.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/model/userInfo.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/userInfo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/responeFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/responeFunc.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/commands.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/commands.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/dao/mysql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/route/route.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,19 +30,19 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dao" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\HEYWOODS_code\go-project\src\self-test\dao" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\HEYWOODS_code\go-project\src\self-test\routes" />
+      <recent name="E:\HEYWOODS_code\go-project\src\self-test\config" />
       <recent name="E:\HEYWOODS_code\go-project\src\self-test\cmd" />
       <recent name="E:\HEYWOODS_code\go-project\src\self-test" />
       <recent name="E:\HEYWOODS_code\go-project\src\self-test\route" />
-      <recent name="E:\HEYWOODS_code\go-project\src\self-test\config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\HEYWOODS_code\go-project\src\self-test\dao" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -88,7 +81,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
