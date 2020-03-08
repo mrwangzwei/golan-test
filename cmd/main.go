@@ -5,14 +5,13 @@ import (
 	"github.com/spf13/cobra"
 	"os"
 	"self-test/config"
-	"self-test/dao"
 )
 
 var (
 	cfg *config.ServerConf
 	rootCmd = &cobra.Command{
-		Use:   "",
-		Short: "start service",
+		Use:   "wzw",
+		Short: "this is a cadre",
 	}
 )
 
@@ -25,8 +24,6 @@ func init() {
 		os.Exit(2)
 		return
 	}
-	//初始化mysql
-	dao.InitMysql(cfg)
 }
 
 func Start() {

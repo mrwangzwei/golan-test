@@ -15,7 +15,7 @@ func InitRoutes() error {
 	//路由开始
 	userInfo := router.Group("user")
 	{
-		userInfo.POST("/test", controller.FindUserInfo)
+		userInfo.POST("/test", controller.UserInfo.FindUserInfo)
 	}
 	return router.Run(config.Conf.WebListen)
 }

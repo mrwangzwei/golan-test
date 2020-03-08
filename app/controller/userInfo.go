@@ -6,10 +6,14 @@ import (
 	request_struct "self-test/app/common-data/request-struct"
 	"self-test/app/model"
 	"self-test/app/utils"
-	"self-test/dao"
+	"self-test/dao/mysql"
 )
 
-func FindUserInfo(c *gin.Context) {
+var UserInfo userInfo
+
+type userInfo struct{}
+
+func (*userInfo) FindUserInfo(c *gin.Context) {
 	var req request_struct.FindUserInfo
 	if err := c.ShouldBind(&req); err != nil {
 		c.JSON(http.StatusOK, utils.Respone(utils.WRONG_PARAM, err.Error(), nil))
@@ -17,7 +21,7 @@ func FindUserInfo(c *gin.Context) {
 	}
 
 	var err error
-	db := dao.Mysql
+	db := mysql.Mysql
 	//查询列表
 	var userList []model.UserInfoModel
 	err = db.Model(&model.UserInfoModel{}).Where("name LIKE ? AND phone = ?", "%"+req.Name+"%", req.Phone).Find(&userList).Error
@@ -38,7 +42,7 @@ func FindUserInfo(c *gin.Context) {
 		"name":  "qqq",
 		"phone": "11111111111",
 	}).Error
-	if (err != nil) {
+	if err != nil {
 		trans.Rollback()
 	}
 	trans.Commit()
