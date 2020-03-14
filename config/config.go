@@ -1,8 +1,7 @@
 package config
 
 import (
-	"encoding/json"
-	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"os"
 )
@@ -10,30 +9,35 @@ import (
 var Conf *ServerConf
 
 type ServerConf struct {
-	ConfigPath string
-	ServerName string `json:"server_name"`
-	ServerEnv  string `json:"server_env"`
-	WebName    string `json:"web_name"`
-	WebListen  string `json:"web_listen"`
-
-	MysqlHost   string `json:"mysql_host"`
-	MysqlPort   int `json:"mysql_port"`
-	MysqlUser   string `json:"mysql_user"`
-	MysqlPwd    string `json:"mysql_pwd"`
-	MysqlDbname string `json:"mysql_dbname"`
-	MysqlPoolOpen int `json:"mysql_pool_open"`
-	MysqlPoolIdle int `json:"mysql_pool_idle"`
-
-	MongoHost   string `json:"mongo_host"`
-	MongoPort   int `json:"mongo_port"`
-	MongoUser   string `json:"mongo_user"`
-	MongoPwd    string `json:"mongo_pwd"`
-	MongoDbname string `json:"mongo_dbname"`
+	ConfigPath  string
+	ServerName  string       `yaml:"server_name"`
+	ServerEnv   string       `yaml:"server_env"`
+	WebName     string       `yaml:"web_name"`
+	WebListen   string       `yaml:"web_listen"`
+	MysqlConfig *mysqlConfig `yaml:"mysql"`
+	MongoConfig *mongoConfig `yaml:"mongo"`
 }
 
-func InitConfigPath(cmd *cobra.Command) *ServerConf {
+type mysqlConfig struct {
+	MysqlHost     string `yaml:"mysql_host"`
+	MysqlPort     int    `yaml:"mysql_port"`
+	MysqlUser     string `yaml:"mysql_user"`
+	MysqlPwd      string `yaml:"mysql_pwd"`
+	MysqlDbname   string `yaml:"mysql_dbname"`
+	MysqlPoolOpen int    `yaml:"mysql_pool_open"`
+	MysqlPoolIdle int    `yaml:"mysql_pool_idle"`
+}
+
+type mongoConfig struct {
+	MongoHost   string `yaml:"mongo_host"`
+	MongoPort   int    `yaml:"mongo_port"`
+	MongoUser   string `yaml:"mongo_user"`
+	MongoPwd    string `yaml:"mongo_pwd"`
+	MongoDbname string `yaml:"mongo_dbname"`
+}
+
+func NewDefaultConfig() *ServerConf {
 	c := &ServerConf{}
-	cmd.Flags().StringVar(&c.ConfigPath, "config", "./config/config.json", "path to config file")
 	return c
 }
 
@@ -47,7 +51,7 @@ func (c *ServerConf) LoadConfigFile() error {
 	if err != nil {
 		return err
 	}
-	if err := json.Unmarshal(data, c); err != nil {
+	if err := yaml.Unmarshal(data, c); err != nil {
 		return err
 	}
 	Conf = c

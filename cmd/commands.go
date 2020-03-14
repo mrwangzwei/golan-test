@@ -28,9 +28,16 @@ var (
 )
 
 func startWebServer(c *cobra.Command, args []string) {
+	config.Conf = config.NewDefaultConfig()
+	c.Flags().StringVar(&config.Conf.ConfigPath, "config", "./config.yml", "path to the config file")
+	err := config.Conf.LoadConfigFile()
+	if err != nil {
+		panic(err)
+	}
 	//初始化mysql
-	mysql.InitMysql(cfg)
-	err := routes.InitRoutes()
+	mysql.InitMysql()
+
+	err = routes.InitRoutes()
 	if err != nil {
 		panic(err)
 	}

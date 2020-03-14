@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"self-test/app/controller"
 	"self-test/app/middleware"
@@ -10,6 +11,7 @@ import (
 func InitRoutes() error {
 	//gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
+	fmt.Println("web server running...")
 	//中间件
 	router.Use(middleware.Recover())
 	//路由开始

@@ -1,0 +1,18 @@
+server_name: test
+server_env: dev
+web_name: test_web
+web_listen: :8888
+mysql:
+  mysql_host: 127.0.0.1
+  mysql_port: 3306
+  mysql_user: root
+  mysql_pwd: heywoods
+  mysql_dbname: test
+  mysql_pool_open: 20
+  mysql_pool_idle: 10
+mongo:
+  mongo_host: 127.0.0.1
+  mongo_port: 27017
+  mongo_user: admin
+  mongo_pwd: admin
+  mongo_dbname: test_db
