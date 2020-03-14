@@ -50,7 +50,7 @@ func (*userInfo) FindUserInfo(c *gin.Context) {
 	var finaluserList []model.UserInfoModel
 	err = db.Model(&model.UserInfoModel{}).Find(&finaluserList).Error
 
-	c.JSON(http.StatusOK, utils.Respone(1, "查询成功", map[string]interface{}{
+	c.JSON(http.StatusOK, utils.SuccessRespone(map[string]interface{}{
 		"userlist":      userList,
 		"singleUser":    singleUser,
 		"finaluserList": finaluserList}))
