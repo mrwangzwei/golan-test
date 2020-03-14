@@ -1,7 +1,7 @@
 package utils
 
-var(
+const (
 	//系统
-	UNKNOW_ERROR int = 40001		//位置错误
-	WRONG_PARAM int = 40002			//参数错误
+	UnkonwError = 40001 //未知错误
+	WrongParam  = 40002 //参数错误
 )

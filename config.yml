@@ -16,3 +16,10 @@ mongo:
   mongo_user: admin
   mongo_pwd: admin
   mongo_dbname: test_db
+redis:
+  type: tcp
+  host: 127.0.0.1
+  port: 6379
+  auth:
+  max_idle: 20
+  max_active: 300

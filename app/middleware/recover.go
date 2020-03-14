@@ -13,9 +13,7 @@ func Recover() gin.HandlerFunc {
 			if r := recover(); r != nil {
 				fmt.Println(r)
 
-
-
-				c.JSON(http.StatusOK, utils.Respone(utils.UNKNOW_ERROR, "system error", []string{}))		//响应
+				c.JSON(http.StatusOK, utils.FailRespone(utils.UnkonwError, "system error", []string{})) //响应
 				return
 			}
 		}()

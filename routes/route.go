@@ -9,7 +9,7 @@ import (
 )
 
 func InitRoutes() error {
-	//gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
 	fmt.Println("web server running...")
 	//中间件

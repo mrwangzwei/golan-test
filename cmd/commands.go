@@ -5,6 +5,7 @@ import (
 	"github.com/spf13/cobra"
 	"self-test/config"
 	"self-test/dao/mysql"
+	"self-test/dao/redis"
 	"self-test/routes"
 )
 
@@ -36,6 +37,9 @@ func startWebServer(c *cobra.Command, args []string) {
 	}
 	//初始化mysql
 	mysql.InitMysql()
+
+	//初始化redis
+	redis.Init()
 
 	err = routes.InitRoutes()
 	if err != nil {
