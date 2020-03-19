@@ -9,28 +9,18 @@ import (
 	"self-test/routes"
 )
 
-var Commands = []*cobra.Command{
-	Test,
-	WebServer,
-}
-
-var (
-	WebServer = &cobra.Command{
+func InitServerCommand() *cobra.Command {
+	cmd := &cobra.Command{
 		Use:   "start_web_server",
 		Short: "webServer start",
 		Run:   startWebServer,
 	}
-
-	Test = &cobra.Command{
-		Use:   "test",
-		Short: "test command",
-		Run:   startTest,
-	}
-)
+	config.Conf = config.NewDefaultConfig()
+	cmd.Flags().StringVar(&config.Conf.ConfigPath, "config", "./config.yml", "path to the config file")
+	return cmd
+}
 
 func startWebServer(c *cobra.Command, args []string) {
-	config.Conf = config.NewDefaultConfig()
-	c.Flags().StringVar(&config.Conf.ConfigPath, "config", "./config.yml", "path to the config file")
 	err := config.Conf.LoadConfigFile()
 	if err != nil {
 		panic(err)
@@ -48,7 +38,4 @@ func startWebServer(c *cobra.Command, args []string) {
 	if err != nil {
 		panic(err)
 	}
-}
-
-func startTest(c *cobra.Command, args []string) {
 }

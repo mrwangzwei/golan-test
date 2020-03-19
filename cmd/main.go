@@ -14,7 +14,7 @@ var (
 )
 
 func Start() {
-	rootCmd.AddCommand(Commands...)
+	rootCmd.AddCommand(InitServerCommand())
 	if len(os.Args) > 1 {
 		if err := rootCmd.Execute(); err != nil {
 			fmt.Fprint(os.Stderr, err)
