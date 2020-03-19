@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"self-test/app/crontask"
 	"self-test/config"
+	"self-test/crontask"
 	"self-test/dao/mysql"
 	"self-test/dao/redis"
 	"self-test/routes"
