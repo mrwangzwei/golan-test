@@ -6,7 +6,6 @@ import (
 	"self-test/crontask"
 	"self-test/dao/mysql"
 	"self-test/dao/redis"
-	"self-test/exam"
 	"self-test/routes"
 )
 
@@ -43,7 +42,7 @@ func startWebServer(c *cobra.Command, args []string) {
 	redis.Init()
 
 	//开启定时任务
-	crontask.Run()
+	go crontask.Run()
 
 	err = routes.InitRoutes()
 	if err != nil {
