@@ -19,6 +19,7 @@ func (*userInfo) FindUserInfo(c *gin.Context) {
 	var err error
 	if err = common.ReadAndValidate(c.Request.Body, &param); err != nil {
 		c.JSON(http.StatusOK, resp.FailRespone(resp.WrongParam, err.Error(), nil))
+		return
 	}
 	db := mysql.Mysql
 	//查询列表
