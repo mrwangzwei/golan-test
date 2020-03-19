@@ -1,4 +1,4 @@
-package utils
+package resp
 
 type ResponseInfo struct {
 	Code int64       `json:"code"`

@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
+	"self-test/app/crontask"
 	"self-test/config"
 	"self-test/dao/mysql"
 	"self-test/dao/redis"
@@ -40,6 +41,9 @@ func startWebServer(c *cobra.Command, args []string) {
 
 	//初始化redis
 	redis.Init()
+
+	//开启定时任务
+	crontask.Run()
 
 	err = routes.InitRoutes()
 	if err != nil {

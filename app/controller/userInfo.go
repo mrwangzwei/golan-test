@@ -3,9 +3,10 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"self-test/app/common/data/req"
+	"self-test/app/common"
+	"self-test/app/common/req"
+	"self-test/app/common/resp"
 	mysqlModel "self-test/app/model/mysql"
-	"self-test/app/utils"
 	"self-test/dao/mysql"
 )
 
@@ -16,13 +17,8 @@ type userInfo struct{}
 func (*userInfo) FindUserInfo(c *gin.Context) {
 	param := req.FindUserInfo{}
 	var err error
-	if err = c.ShouldBind(&param); err != nil {
-		c.JSON(http.StatusOK, utils.FailRespone(utils.WrongParam, err.Error(), nil))
-		return
-	}
-	if err = param.Validator(); err != nil {
-		c.JSON(http.StatusOK, utils.FailRespone(utils.WrongParam, err.Error(), nil))
-		return
+	if err = common.ReadAndValidate(c.Request.Body, &param); err != nil {
+		c.JSON(http.StatusOK, resp.FailRespone(resp.WrongParam, err.Error(), nil))
 	}
 	db := mysql.Mysql
 	//查询列表
@@ -53,7 +49,7 @@ func (*userInfo) FindUserInfo(c *gin.Context) {
 	var finaluserList []mysqlModel.UserInfoModel
 	err = db.Model(&mysqlModel.UserInfoModel{}).Find(&finaluserList).Error
 
-	c.JSON(http.StatusOK, utils.SuccessRespone(map[string]interface{}{
+	c.JSON(http.StatusOK, resp.SuccessRespone(map[string]interface{}{
 		"userlist":      userList,
 		"singleUser":    singleUser,
 		"finaluserList": finaluserList}))

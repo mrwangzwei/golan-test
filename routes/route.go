@@ -13,7 +13,7 @@ func InitRoutes() error {
 	router := gin.Default()
 	fmt.Println("web server running...")
 	//中间件
-	router.Use(middleware.Recover())
+	router.Use(middleware.Recover(), middleware.CorsFilter())
 	//路由开始
 	userInfo := router.Group("user")
 	{
