@@ -1,12 +1,12 @@
 package cmd
 
 import (
-	"fmt"
 	"github.com/spf13/cobra"
 	"self-test/config"
 	"self-test/crontask"
 	"self-test/dao/mysql"
 	"self-test/dao/redis"
+	"self-test/exam"
 	"self-test/routes"
 )
 
@@ -25,7 +25,7 @@ var (
 	Test = &cobra.Command{
 		Use:   "test",
 		Short: "test command",
-		Run:   start,
+		Run:   startTest,
 	}
 )
 
@@ -51,7 +51,5 @@ func startWebServer(c *cobra.Command, args []string) {
 	}
 }
 
-func start(c *cobra.Command, args []string) {
-	fmt.Println("aaaaaaaaaaaaaaa")
-	fmt.Println(config.Conf.ServerName)
+func startTest(c *cobra.Command, args []string) {
 }
