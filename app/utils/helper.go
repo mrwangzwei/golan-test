@@ -1,8 +1,10 @@
 package utils
 
 import (
+	"math/rand"
 	"strconv"
 	"strings"
+	"time"
 )
 
 //字符串转slice，并且值为int
@@ -70,4 +72,28 @@ func IntSlicesMerge(arr1 []int, arr2 []int) (res []int) {
 		}
 	}
 	return
+}
+
+//随机字符串
+func RandString(length int) string {
+	const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	var src = rand.NewSource(time.Now().UnixNano())
+	const (
+		letterIdxBits = 6
+		letterIdxMask = 1<<letterIdxBits - 1
+		letterIdxMax  = 63 / letterIdxBits
+	)
+	b := make([]byte, length)
+	for i, cache, remain := length-1, src.Int63(), letterIdxMax; i >= 0; {
+		if remain == 0 {
+			cache, remain = src.Int63(), letterIdxMax
+		}
+		if idx := int(cache & letterIdxMask); idx < len(letterBytes) {
+			b[i] = letterBytes[idx]
+			i--
+		}
+		cache >>= letterIdxBits
+		remain--
+	}
+	return string(b)
 }
