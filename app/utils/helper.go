@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -96,4 +97,18 @@ func RandString(length int) string {
 		remain--
 	}
 	return string(b)
+}
+
+//随机数
+func RandInt64(min, max int64) int64 {
+	if min >= max || min == 0 || max == 0 {
+		return max
+	}
+	return rand.Int63n(max-min) + min
+}
+
+//当前时间
+func DateStr() string {
+	now := time.Now()
+	return fmt.Sprintf("%04d%02d%02d%02d%02d%02d", now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second())
 }
